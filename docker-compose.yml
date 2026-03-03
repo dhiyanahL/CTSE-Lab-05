@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  item-service:
+    build: ./Item-Service
+    container_name: Item-Service
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-net
+
+  order-service:
+    build: ./Order-Service
+    container_name: Order-Service
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-net
+
+  payment-service:
+    build: ./Payment-Service
+    container_name: Payment-Service
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-net
+
+  api-gateway:
+    build: ./API-Gateway
+    container_name: API-Gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - item-service
+      - order-service
+      - payment-service
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
