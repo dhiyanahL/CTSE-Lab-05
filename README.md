@@ -1,6 +1,6 @@
 # CTSE-Lab-05
 
-## Postman API Testing of Endpoints
+## Postman : API Testing of Endpoints
 
 ![alt text](image.png)
 
